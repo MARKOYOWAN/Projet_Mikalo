@@ -1,0 +1,26 @@
+<div *ngIf="marque">
+    <app-title translateKey="NOS_MARQUE"></app-title>
+    <swiper [navigation]="true" [slidesPerView]="2" [spaceBetween]="10" [pagination]="{dynamicBullets: true}" [breakpoints]="breakpoints" class="mySwiper">
+        <div *ngIf="marque">
+            <ng-template swiperSlide *ngFor="let mg of marque; let i = index">
+                <div>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <img [src]="mg.image" (click)="onClick(mg.lien)">
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                </div>
+            </ng-template>
+        </div>
+    </swiper>
+</div>
+
+<div *ngIf="!ready && getbrands" class="items">
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+</div>

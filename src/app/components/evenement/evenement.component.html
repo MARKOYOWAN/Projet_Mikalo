@@ -1,0 +1,40 @@
+<div *ngIf="imgOnly" (click)="openEvent(event.id)">
+    <app-image [image]="event.image"></app-image>
+</div>
+
+<div *ngIf="!imgOnly">
+    <div *ngIf="event">
+        <ion-card [id]="event.id" class="ion-no-margin ion-margin-bottom no-border-radius">
+            <ion-card-header class="ion-no-padding">
+                <h1 class="event-title">{{event.title | translate}}</h1>
+            </ion-card-header>
+
+            <ion-card-content class="ion-padding">
+                <p class="ion-padding-bottom">{{event.description | translate}}</p>
+                <div *ngIf="event.link">
+                    <div *ngIf="event.participation">
+                        <div *ngIf="!event.participe">
+                            <ion-item lines="none" class="ion-no-padding">
+                                <ion-checkbox slot="start" mode="ios" color="primary" [(ngModel)]="is_condition" (ionChange)="check(is_condition?1:0)"></ion-checkbox>
+                                <ion-label position="fixed"> {{event.condition | translate}}</ion-label>
+                            </ion-item>
+                            <ion-button class="no-border-radius" [disabled]="!is_condition" size="small" (click)="openCondition(event)" [style.--ion-color-primary]="event.button_color" [style.color]="'#FFFFFF'" slot="end">{{event.buttonlabel | translate}}</ion-button>
+                        </div>
+
+                        <div *ngIf="event.participe">
+                            <ion-button size="small" class="no-border-radius" (click)="delete(event)" slot="end">{{'MAP_BUTTON_CANCEL' | translate}}</ion-button>
+                        </div>
+                    </div>
+                    <div *ngIf="!event.participation">
+                        <ion-button size="small" class="no-border-radius" (click)="openLink(event.link)" [style.--ion-color-primary]="event.button_color" [style.color]="'#FFFFFF'" slot="end">{{event.buttonlabel | translate}}</ion-button>
+                    </div>
+                </div>
+
+            </ion-card-content>
+            <div class="card-footer ion-no-padding">
+                <!--img class="img_offre" *ngIf="event.image" class="imageCard" [src]="event?.image" /-->
+                <app-image [image]="event.image"></app-image>
+            </div>
+        </ion-card>
+    </div>
+</div>

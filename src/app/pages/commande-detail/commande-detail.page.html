@@ -1,0 +1,29 @@
+<!-- <app-header></app-header> -->
+<app-header [title]="'MENUS_COMMANDE_5'"></app-header>
+
+<ion-content>
+    <div *ngIf="ready">
+        <ion-card *ngFor="let item of shop_data">
+            <ion-card-header>
+                <ion-card-subtitle>
+                    <h2 class="text"> {{'DESCRIPTION' | translate}} </h2>
+                </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content class="text_content">
+                <p>{{'FORM_PRODUIT__9' | translate}} : {{item.name}}</p>
+                <p>{{'PRICE' | translate}} : {{item.price}} {{item.code}}</p>
+                <p>{{'QUANTITER' | translate}} : {{item.qt}}</p>
+                <p>{{'PAYMENT' | translate}} : {{item.payment}}</p>
+                <p>{{'LIVRAISON' | translate}} : {{item.livraison}}</p>
+                <p>{{'STATUS' | translate}} : {{item.status}}</p>
+                <p>{{'DATE' | translate}} : {{item.date}}</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="!ready">
+        <div class="text_vide">
+            <h2>{{'VIDE' | translate}}</h2>
+        </div>
+    </div>
+</ion-content>

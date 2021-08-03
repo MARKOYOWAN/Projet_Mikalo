@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons (click)="back()" slot="end">
+            <ion-icon class="iconIcon" color="primary" name="close-outline"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+    <img class="img" src="assets/img/logo.jpg">
+    <!-- 
+    <div class="text_conn">
+        <p>{{'CONECTER_VOUS' | translate}}</p>
+        <p>{{'VIA_COMPTE' | translate}} :</p>
+    </div> -->
+
+    <div class="form_div">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form">
+                <ion-item lines="none">
+                    <ion-input placeholder="{{'FORM_EMAIL_2' | translate}}" type="email" formControlName="email" class="form-control"></ion-input>
+                    <ion-icon color="primary" name="mail" slot="end"></ion-icon>
+                </ion-item>
+
+                <ion-item lines="none">
+                    <ion-input placeholder="{{'FORM_MOT_DE_PASSE_3' | translate}}" enterkeyhit="go" type="password" formControlName="passwd" class="form-control"></ion-input>
+                    <ion-icon color="primary" name="key" slot="end"></ion-icon>
+                </ion-item>
+            </div>
+
+            <div class="marg">
+                <div class="btn_log">
+                    <ion-button class="btn_ion" type="submit" [disabled]="!loginForm.valid" (keyup.enter)="loginForm.valid && onSubmit()" color="primary">{{'CONNECTION' | translate}}</ion-button>
+                </div>
+                <div class="btn">
+                    <a (click)="reset()">{{'FORM_FORGOT_PASSWORD' | translate}} </a>
+                </div>
+
+                <div class="btn_log" id="count">
+                    <ion-button class="btn_ion" (click)="account()" color="primary">{{'NEW_ACCOUNT' | translate}}</ion-button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</ion-content>

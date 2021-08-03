@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<ion-content>
+    <app-refresher (onRefresh)="loadData()"></app-refresher>
+    <div *ngIf="nb_cmd == 0; then sanscmd else aveccmd"></div>
+    <ng-template #aveccmd>
+        <ion-card *ngFor="let item of shop_data" (click)="open(item.id_order)">
+            <ion-card-header class="ion-padding">
+                <h3 class="text_cont">{{item.name}}</h3>
+            </ion-card-header>
+
+            <ion-card-content class="text">
+                <p>{{'PRICE' | translate}} : {{item.price}} {{item.code}}</p>
+                <p>{{'PAYMENT' | translate}} : {{item.payment}}</p>
+                <p>{{'DATE' | translate}} : {{item.date}}</p>
+            </ion-card-content>
+        </ion-card>
+    </ng-template>
+    <ng-template #sanscmd>
+        <div class="text_vide">
+            <h2>{{'COMMANDE_VIDE' | translate}}</h2>
+        </div>
+
+    </ng-template>
+
+</ion-content>

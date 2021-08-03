@@ -1,0 +1,7 @@
+{
+  "name": "KALO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

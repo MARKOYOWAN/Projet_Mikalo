@@ -1,0 +1,94 @@
+<app-header [title]="'UPDATE'">
+</app-header>
+
+<ion-content>
+    <div class="profil-content">
+        <div class="iconBtn">
+            <ion-icon class="Icon" color="light" name="camera-outline" (click)="initCamera()"></ion-icon>
+        </div>
+        <img id="profil" class="profil" [src]="compte?.image" alt="">
+    </div>
+    <div *ngIf="is_ready">
+        <form [formGroup]="userprofileForm" (ngSubmit)="onSubmit()">
+            <ion-list *ngFor="let item of forms ">
+                <ion-item *ngIf="item.type == 'text' || item.type ==  'password' || item.type == 'tel' || item.type == 'url'  ">
+                    <ion-label position="stacked">
+                        {{item.label | translate}}
+                    </ion-label>
+                    <ion-input name="{{item.field}}" [formControlName]="item.field" [type]="item.type"></ion-input>
+                    <div *ngIf="error?.password">
+                        <ng-container *ngFor="let message of error.password.messages">
+                            <small class="error-message">{{message | translate}}</small>
+                        </ng-container>
+                    </div>
+                </ion-item>
+
+                <ion-item *ngIf="item.type == 'email'">
+                    <ion-label position="stacked">
+                        {{item.label | translate}}
+                    </ion-label>
+                    <ion-input name="{{item.field}}" [formControlName]="item.field" [type]="item.type"></ion-input>
+                    <div *ngIf="error?.email">
+                        <ng-container *ngFor="let message of error.email.messages">
+                            <small class="error-message">{{message | translate}}</small>
+                        </ng-container>
+                    </div>
+                </ion-item>
+
+                <ion-item *ngIf="item.type == 'date'">
+                    <ion-label position="stacked">
+                        {{item.label | translate}}
+                    </ion-label>
+                    <ion-datetime [formControlName]="item.field" displayFormat="DD/MM/YYYY"></ion-datetime>
+                </ion-item>
+
+                <div *ngIf="item.type == 'checkbox' " class="check">
+                    <div *ngFor="let json of item.json_value">
+                        <ion-item lines="none">
+                            <ion-checkbox [formControlName]="item.field" mode="ios" slot="start" [required]="item.is_required"></ion-checkbox>
+                            <ion-label>
+                                {{json.label}}
+                            </ion-label>
+                        </ion-item>
+                    </div>
+                </div>
+
+                <ion-grid *ngIf="item.type == 'radio' ">
+                    <ion-radio-group [formControlName]="item.field" [required]="item.is_required">
+                        <ion-row class="ion-align-items-center ion-justify-content-center">
+                            <ion-col>
+                                <ion-item lines="none" class="item-no-padding">
+                                    <ion-label>
+                                        {{item.label | translate}}
+                                    </ion-label>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngFor="let json of item.json_value">
+                                <ion-item lines="none">
+                                    <ion-label>{{json.label | translate}}</ion-label>
+                                    <ion-radio [value]="json.value" slot="end"></ion-radio>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                </ion-grid>
+
+
+                <ion-item *ngIf="item.type == 'select'">
+                    <ion-label> {{item.label | translate}}</ion-label>
+                    <ion-select [formControlName]="item.field" [required]="item.is_required">
+                        <div *ngFor="let json of item.json_value">
+                            <ion-select-option [value]="json.value">{{json.label}}</ion-select-option>
+                        </div>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+
+            <div class="btn">
+                <ion-button [disabled]="userprofileForm.invalid || userprofileForm.pristine" type="submit" (keyup.enter)="userprofileForm.valid && !userprofileForm.pristine && onSubmit()" color="primary">{{'UPDATE' | translate}}</ion-button>
+            </div>
+
+        </form>
+    </div>
+
+</ion-content>

@@ -1,0 +1,41 @@
+<app-header [title]="'NOTIFICATION_APK'"></app-header>
+
+<ion-content>
+    <div *ngIf="ready">
+        <ion-card *ngFor="let detail of notifications">
+            <ion-card-header class="spin">
+                <h1>{{detail?.title | translate}}</h1>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding">
+                <app-image [image]="detail?.image"></app-image>
+
+                <ion-label>{{detail?.message | translate }}</ion-label>
+            </ion-card-content>
+            <div class="card-footer ion-margin" *ngIf="detail?.link">
+                <ion-button class="ion-float-right" size="small" (click)="open(detail?.link)" slot="end">{{'PLUS_DE_DéTAIL_' | translate}}</ion-button>
+            </div>
+        </ion-card>
+    </div>
+
+    <div *ngIf="!ready">
+        <div class="skeleton-event">
+            <div class="skeleton-event-content">
+                <div class="skeleton-event-title">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-image">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-description">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-button">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,7 @@
+<div *ngIf="ban" class="bann">
+    <h2 *ngIf="ban.title && ban.text_active" class="ban-title">{{ban.text | translate }}</h2>
+    <div *ngIf="ban.banner && ban.image_active">
+        <!--img class="ban-img" [src]="ban.banner" /-->
+        <app-image [image]="ban.banner"></app-image>
+    </div>
+</div>

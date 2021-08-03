@@ -1,0 +1,52 @@
+<ion-app>
+    <ion-menu menuId="main-menu" content-id="main">
+        <ion-header>
+            <ion-toolbar class="ion-no-padding">
+                <ion-item *ngIf="userInfo" (click)="compte()" lines="full">
+                    <ion-avatar slot="start">
+                        <img class="prof" [src]="userInfo.image">
+                    </ion-avatar>
+                    <ion-label class="label">
+                        {{userInfo.name}}
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="!userInfo" (click)="compte()" lines="full">
+                    <ion-avatar slot="start">
+                        <img class="prof" src="assets/img/default.png">
+                    </ion-avatar>
+                    <ion-label class="label">
+                        <p>{{'SE_CONNECTER' | translate}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle>
+                    <ion-item *ngFor="let cat of MenuData; let l = last" (click)="Go(cat.link)" [lines]="l?'none':''">
+                        <ion-icon [name]="cat.icon" slot="start"></ion-icon>
+                        <ion-label>{{ cat.title | translate}}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+
+        </ion-content>
+        <ion-footer *ngIf="socialNetwork">
+            <ion-grid class="footer">
+                <ion-row class="ion-align-items-center
+                    ion-justify-content-center">
+                    <ion-col [size]="3" *ngFor="let item of Reseaux">
+                        <div class="btn-content">
+                            <ion-button class="my-round default" (click)="Open(item.link)">
+                                <ion-icon slot="icon-only" [name]="item.icon"></ion-icon>
+                            </ion-button>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-footer>
+    </ion-menu>
+
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

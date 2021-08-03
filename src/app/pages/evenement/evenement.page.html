@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<ion-content>
+    <app-title translateKey="EVENEMENT"></app-title>
+    <app-refresher (onRefresh)="loadEvent()"></app-refresher>
+    <div *ngIf="ready">
+        <div *ngFor="let event of evenements">
+            <app-evenement (greetEvent)="loadEvent()" [event]="event" id="{{event.id}}"></app-evenement>
+        </div>
+    </div>
+    <div *ngIf="evenements.length == 0 && ready ">
+        <app-data-vide></app-data-vide>
+    </div>
+    <div *ngIf="!ready">
+        <div class="skeleton-event">
+            <div class="skeleton-event-content">
+                <div class="skeleton-event-title">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-description">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-button">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+            </div>
+            <div class="skeleton-event-image">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+        </div>
+        <div class="skeleton-event">
+            <div class="skeleton-event-content">
+                <div class="skeleton-event-title">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-description">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div class="skeleton-event-button">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+            </div>
+            <div class="skeleton-event-image">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+        </div>
+    </div>
+</ion-content>

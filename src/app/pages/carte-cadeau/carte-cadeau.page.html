@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<ion-content>
+  <app-refresher (onRefresh)="loadData()"></app-refresher>
+
+  <app-title translateKey="GIFT_CARD_TITLE"></app-title>
+  
+  <div  *ngIf="ready" [innerHTML]="html"></div>
+
+  <div *ngIf="!ready">
+    <div class="banner">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="item-title">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="items">
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="item-title">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="items">
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="item-title">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="items">
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+  </div>
+
+  <div class="ion-text-center ion-padding ion-margin-top">
+    <ion-button (click)="open()">
+      {{'COMMANDER' | translate }}
+    </ion-button>
+  </div>
+    
+</ion-content>

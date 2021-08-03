@@ -1,0 +1,53 @@
+<ion-list *ngIf="is_active && myModule">
+    <ion-list-header>
+        <ion-label>
+            <h2 class="texte">{{ 'RATTACH_DIGIT_CARD' | translate }}</h2>
+            <!-- <h2 class="texte">
+                {{ 'RATTACH_DIGIT_CARD_DESCRIPTION' | translate }}
+            </h2> -->
+        </ion-label>
+    </ion-list-header>
+    <div class="btn-dark">
+        <ion-radio-group [formControl]="hasCard" *ngIf="option.choice && !option.found" (ionChange)="onHasCardChange($event)">
+            <!-- <ion-row class="ion-align-items-center ion-justify-content-center"> -->
+            <ion-row>
+                <ion-col>
+                    <ion-item lines="none" class="item-no-padding">
+                        <ion-label>{{ 'NO' | translate}}</ion-label>
+                        <ion-radio [value]="0" class="btn_radio"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item lines="none" class="item-no-padding">
+                        <ion-label>{{ 'YES' | translate}}</ion-label>
+                        <ion-radio [value]="1" class="btn_radio"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-radio-group>
+    </div>
+    <ion-item *ngIf="hasCard.value == 1 && !option.found" lines="none" class="search-card-digit">
+        <ion-searchbar #searchdigit placeholder="{{ 'BAR_SEARCH_CODE' | translate }}" enterkeyhint="search" (keyup)="search($event, searchdigit.value)"></ion-searchbar>
+        <div class="btn_valider" *ngIf="!option.choice || hasCard.value == 1">
+            <ion-button (click)="validate(searchdigit.value)">{{'VALIDER' | translate}}</ion-button>
+        </div>
+    </ion-item>
+
+    <div *ngIf="hasCard.value == 0" class="ion-text-center search-card-digit">
+        <ion-button (click)="commander()">
+            {{ 'ORDER_CARD' | translate }}
+        </ion-button>
+    </div>
+
+    <div *ngIf="option.found" class="num-card">
+        <ion-item lines="none">
+            <ion-label>
+                {{cardNumber}}
+            </ion-label>
+            <ion-button (click)="reset()">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </div>
+
+</ion-list>

@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<ion-content>
+    <app-refresher (onRefresh)="GetNotifi()"></app-refresher>
+    <div *ngIf="ready">
+        <ion-list>
+            <ion-item *ngFor="let item of notifications; let l = last; let i = index" [lines]="l ? 'none' : ''" (click)="PageNotif(item.id)">
+                <ion-thumbnail slot="start">
+                    <ion-img [src]="item.image"></ion-img>
+                </ion-thumbnail>
+                <ion-label>
+                    <h2>{{item.title | translate }}</h2>
+                    <p>{{item.message | translate }}</p>
+                    <p>{{item.date_sent | dates}}</p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div *ngIf="!ready">
+        <app-data-vide></app-data-vide>
+    </div>
+
+</ion-content>

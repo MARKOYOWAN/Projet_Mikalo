@@ -1,0 +1,57 @@
+h2 {
+    padding: 0px 16px 0px 16px
+}
+
+.c-cadeaux {
+    img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+.row {
+    display: flex;
+    .main_features_content {
+        display: flex;
+        div {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+        div:first-child {
+            padding-left: 0px !important;
+        }
+        div:last-child {
+            padding-right: 0px !important;
+        }
+    }
+}
+
+.main_about_area {
+    display: none;
+}
+
+ion-button {
+    --border-radius: 0px;
+}
+
+
+.banner {
+    height: 130px;
+}
+
+.item-title {
+    width: 30%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.items ion-skeleton-text {
+    width: 20%;
+    height: 70px;
+}

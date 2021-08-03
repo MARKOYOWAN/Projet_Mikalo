@@ -1,0 +1,28 @@
+.text {
+    text-align: left;
+    color: var(--ion-color-dark);
+}
+
+.spiner {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.img_default {
+    height: 20vh;
+}
+
+#serv {
+    margin-top: 5%;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.items ion-skeleton-text {
+    width: 20%;
+    height: 70px;
+}

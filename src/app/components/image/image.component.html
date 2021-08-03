@@ -1,0 +1,2 @@
+<ion-img class="img_card" [style.width]="!_onLoad ? '100%' : '0px'" [src]="image" (ionImgDidLoad)="onLoad()"></ion-img>
+<ion-skeleton-text *ngIf="_onLoad" animated class="skeleton"></ion-skeleton-text>

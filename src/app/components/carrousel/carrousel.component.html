@@ -1,0 +1,56 @@
+<div *ngIf="is_ready" class="carousel">
+    <swiper [navigation]="true" [slidesPerView]="2" [spaceBetween]="10" [pagination]="false" [breakpoints]="breakpoints" class="mySwiper">
+        <div *ngIf="carrousel">
+            <ng-template swiperSlide *ngFor="let car of carrousel; let i = index">
+                <div>
+                    <ion-card>
+                        <ion-card-header class="ion-no-padding">
+                            <div *ngIf="car.loader" class="div-spin">
+                                <ion-spinner class="spine-even" name="lines"></ion-spinner>
+                            </div>
+                            <img class="product-image" (load)="onLoad()" (error)="onError(i)" [src]="car.image" (click)="open(car.link)" />
+                        </ion-card-header>
+                        <ion-card-content class="ion-no-padding text-color-price">
+                            <ion-text color="dark" (click)="open(car.link)">
+                                <div class="class_name">
+                                    <h4 class="h4_name">{{car.name}}</h4>
+                                </div>
+                                <div class="class_ref" *ngIf="car.reference">
+                                    <p>{{'REFERENCE' | translate}} : {{car.reference}}</p>
+                                </div>
+                            </ion-text>
+                            <div class="class_price" (click)="open(car.link)">
+                                <p>{{car.price}}</p>
+                            </div>
+                            <!-- <div>
+                                <ion-grid class="ion-no-padding class_star">
+                                    <ion-row>
+                                        <div *ngFor="let item of [1,1,1,1,1]">
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </div>
+                                    </ion-row>
+                                </ion-grid>
+                            </div> -->
+                            <div>
+                                <ion-item lines="none" class="ion-no-padding" (click)="open(car.card)">
+                                    <ion-button class="my-round default">
+                                        <div class="class_icon">
+                                            <ion-icon color="tertiary" slot="start" name="basket-outline"></ion-icon>
+                                        </div>
+                                    </ion-button>
+                                    <ion-button class="class_btn"> Panier </ion-button>
+                                </ion-item>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ng-template>
+        </div>
+
+        <div *ngIf="!carrousel">
+            <ng-template swiperSlide *ngFor="let item of [1,1];">
+                <ion-spinner class="spiner" name="lines"></ion-spinner>
+            </ng-template>
+        </div>
+    </swiper>
+</div>

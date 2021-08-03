@@ -1,0 +1,19 @@
+<ion-tabs (ionTabsDidChange)="test()">
+    <ion-tab-bar slot="bottom" >
+        <ion-tab-button tab="home" color="primary">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>{{ 'ACCUEIL_' | translate}}</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="notification" color="primary">
+            <ion-icon name="notifications"></ion-icon>
+            <ion-label>{{ 'NOTIFICATION_APK' | translate}}</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="compte" color="primary">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>{{ 'PROFILE' | translate}}</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

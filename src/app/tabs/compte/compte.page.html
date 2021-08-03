@@ -1,0 +1,83 @@
+<app-header></app-header>
+
+<ion-content>
+    <app-refresher (onRefresh)="Storage()"></app-refresher>
+
+    <div class="back">
+        <ion-avatar class="profil">
+            <img [src]="compte?.image">
+        </ion-avatar>
+    </div>
+
+
+    <div class="item-div">
+        <ion-list>
+            <ion-row class="ion-padding ion-list-header">
+                <ion-col size="8">
+                    <h2 class="font_text">{{'INFO_GENERALE' | translate}}</h2>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-button class="profil-button" (click)="update()" size="small">{{'UPDATE_PROFIL' | translate}}</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-item lines="none">
+                <ion-label> {{compte?.name}}</ion-label>
+                <ion-icon name="person" color="primary" slot="start"></ion-icon>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>{{compte?.email}}</ion-label>
+                <ion-icon name="mail" color="primary" slot="start"></ion-icon>
+            </ion-item>
+            <ion-row class="ion-padding ion-list-header" *ngIf='myModule'>
+                <ion-col size="12">
+                    <h2 class="font_text">{{'CARTE_DIGITALE' | translate}}</h2>
+                    <p *ngIf="!compte.card?.old_digit_card">
+                        {{'DESCRIPTION_CARTE_DIGITAL' | translate }}
+                    </p>
+                    <p *ngIf="compte.card?.old_digit_card">
+                        {{'DESCRIPTION_CARTE_DIGITAL_ACTIVE' | translate }}
+                    </p>
+                </ion-col>
+                <ion-col size="12" class="grid">
+                    <ion-grid *ngIf="!compte.card?.old_digit_card">
+                        <ion-row class="ion-justify-content-around">
+                            <ion-col>
+                                <ion-button (click)="commander()">{{'CARTE_COMMANDE' | translate}}</ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="ion-justify-content-around">
+                            <ion-col class="">
+                                {{'OR' | translate}}
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="ion-justify-content-around">
+                            <ion-col>
+                                <ion-button (click)="rattacher()">{{'CARTE_RATTACHER' | translate}}</ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-grid *ngIf="compte.card?.old_digit_card">
+                        <ion-row class="ion-justify-content-around">
+                            <ion-col>
+                                <img [src]="compte.card.image">
+                                <div class="texte">
+                                    <p>{{'CARTE_NUM_METISSE' | translate}} : <span class="num">{{compte.card.old_digit_card}}</span></p>
+                                    <p>{{'PRESENTER' | translate}} </p>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </div>
+
+</ion-content>
+
+<ion-footer>
+    <div class="btn">
+        <ion-button (click)="deconnection()" color="danger"> {{'DECONNECTION' | translate}}</ion-button>
+    </div>
+</ion-footer>

@@ -1,0 +1,28 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <app-refresher (onRefresh)="loadData()"></app-refresher>
+    <div *ngIf="Events">
+        <ion-card class="ion-no-margin ion-margin-bottom no-border-radius">
+            <swiper [slidesPerView]="1" [spaceBetween]="0" [pagination]="{clickable: true}" [breakpoints]="breakpoints" class="mySwiper">
+                <ng-template swiperSlide *ngFor="let ev of Events">
+                    <app-evenement [event]="ev" [imgOnly]="true"></app-evenement>
+                </ng-template>
+            </swiper>
+        </ion-card>
+    </div>
+    <div *ngIf="Banners">
+        <div *ngFor="let bann of Banners">
+            <ion-card class="no-border-radius ion-no-margin ion-margin-bottom">
+                <ion-card-header class="ion-no-padding">
+                    <app-baniere [ban]="bann"></app-baniere>
+                </ion-card-header>
+                <ion-card-content class="ion-no-padding">
+                    <app-carrousel [carrousel]="bann.products"></app-carrousel>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+    <div>
+        <app-brands></app-brands>
+    </div>
+</ion-content>

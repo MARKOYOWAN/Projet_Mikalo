@@ -1,0 +1,10 @@
+ion-segment-button {
+    --background-checked: var(--ion-color-primary);
+    --color-checked: var(--ion-color-primary-contrast);
+    --indicator-color: transparent;
+    --color: var(--ion-color-primary);
+}
+
+.segment {
+    margin-top: 5%;
+}

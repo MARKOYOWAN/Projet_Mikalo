@@ -1,0 +1,36 @@
+/* ion-button {
+    border-radius: 0px;
+    --border-radius: 0px;
+}
+
+ion-card {
+    border-radius: 0px;
+    box-shadow: unset;
+    margin: 0px;
+    background: var(--ion-color-light);
+}
+
+ion-content {
+    --background: var(--ion-color-light);
+}
+
+.image_couleur {
+    border-radius: 50px;
+}
+
+h1,
+h3,
+p {
+    color: var(--ion-color-dark);
+    font-weight: bolder;
+} */
+
+ion-button {
+    --border-radius: 5%;
+}
+
+ion-card {
+    border-radius: 0px;
+    box-shadow: unset;
+    margin: 0px;
+}

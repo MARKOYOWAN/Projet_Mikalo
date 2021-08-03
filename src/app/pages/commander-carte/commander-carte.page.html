@@ -1,0 +1,9 @@
+<app-header [title]="'CARTE_RATTACHER'"></app-header>
+
+<ion-content>
+    <ratach-digit-card [option]="rattachCardOption" (result)="onDigit($event)"></ratach-digit-card>
+
+    <div class="btn_valider">
+        <ion-button (click)="onDigit($event)">{{'VALIDER' | translate}}</ion-button>
+    </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <app-refresher (onRefresh)="Magasin()"></app-refresher>
+    <div *ngIf="shop">
+        <div *ngFor="let item of shop; let l = last">
+            <ion-item (click)="presentActionSheet(item)" [lines]="l?'none':''">
+                <!-- class="ion-no-margin ion-no-padding no-border-radius" -->
+
+                <img class="boutique" [src]="item.image">
+
+                <ion-label id="label">
+                    <h2>{{item.name | translate}}</h2>
+                    <p>{{item.address | translate}}</p>
+                    <p class="text_label">
+                        <ion-icon slot="start" name="call" color="primary"></ion-icon> : {{item.phone | translate}}</p>
+                    <p class="text_label">
+                        <ion-icon slot="start" name="mail" color="primary"></ion-icon> : {{item.email | translate}}</p>
+                </ion-label>
+            </ion-item>
+        </div>
+    </div>
+    <div *ngIf="!shop">
+        <ion-item *ngFor="let item of [1,1,1,1,1];">
+            <ion-avatar slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </div>
+</ion-content>

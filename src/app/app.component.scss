@@ -1,0 +1,29 @@
+.bar {
+    border-left: 2px solid #000;
+    display: inline-block;
+    height: 50px;
+    margin: 0 20px;
+}
+
+.footer {
+    width: 100%;
+}
+
+.img-avatar {
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 50% 50% 50% 50%;
+    margin-top: 5%;
+}
+
+.text p {
+    text-align: center;
+}
+
+.prof {
+    border: gray solid 1px;
+}
+
+ion-content {
+    --background: var(--ion-color-dark-contrast);
+}

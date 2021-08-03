@@ -1,0 +1,42 @@
+.ban-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center right;
+}
+
+// .ban-title {
+//     width: calc(100% - 24px);
+//     height: auto;
+//     text-align: center;
+//     color: var(--ion-color-dark);
+//     margin: 12px;
+// }
+.ban-title {
+    width: 100%;
+    height: auto;
+    background-color: var(--ion-color-primary);
+    padding: 0.5px;
+    text-align: center;
+    color: var(--ion-color-primary-contrast);
+    font-size: 20px;
+}
+
+// .ban-title {
+//     height: 7vh;
+//     padding: 0px 5px;
+//     text-align: center;
+//     color: var(--ion-color-primary-contrast);
+//     font-size: 20px;
+// }
+.banniere {
+    height: 25vh;
+}
+
+.bann {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+.texte {}
